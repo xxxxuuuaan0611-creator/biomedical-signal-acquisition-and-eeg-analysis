@@ -1,0 +1,5 @@
+model,mean_loso_accuracy,population_sd_across_3_folds,protocol
+MLP,0.675,0.22,offline LOSO with batch balancing and pseudo-label self-training
+SVM,0.655,0.281,offline LOSO with batch balancing and pseudo-label self-training
+RandomForest,0.704,0.268,offline LOSO with batch balancing and pseudo-label self-training
+ExtraTrees,0.793,0.154,offline LOSO with batch balancing and pseudo-label self-training
