@@ -25,9 +25,27 @@ The team built an analog front end with an AD620 preamplifier, a mains notch fil
 
 The 500 Hz sampling rate does not preserve the full EMG bandwidth: signal components above 250 Hz can alias. Eight-bit transmission also limits amplitude resolution. These are educational measurements, without clinical validation.
 
-![Notch-filter circuit and measured frequency response](assets/notch-filter.png)
+### Circuit architecture and stage measurements
 
-Circuit and measurement excerpt from the team’s Experiment 2 report.
+![ECG acquisition block diagram](assets/acquisition-block-diagram.png)
+
+![Complete ECG circuit and breadboard implementation](assets/ecg-complete-circuit.png)
+
+The analog front end was designed, assembled, and measured jointly by the team. Circuit excerpts and measurements are from Experiment 2; full-size stage figures are linked below.
+
+| Stage | Documented design and measured result | Figures |
+| --- | --- | --- |
+| Preamplifier | AD620, Rg = 500 Ω; ideal gain 99.8, measured gain 96.69 | [Circuit and test waveform](assets/pre-amplifier.png) |
+| Notch filter | Measured center 59.5 Hz; approximately 38 dB attenuation at the center | [Circuit and Bode plot](assets/notch-filter.png) |
+| Band-pass filter | ECG: approximately 0.9–98.6 Hz; EMG: approximately 8.5–420 Hz | [ECG](assets/ecg-band-pass-filter.png) · [EMG](assets/emg-band-pass-filter.png) |
+| Post-amplifier | ECG: measured gain 7; EMG: measured gain 9.9 | [ECG](assets/ecg-post-amplifier.png) · [EMG](assets/emg-post-amplifier.png) |
+| Level shifter | Calculated offset 1.96 V; measured DC output 1.97 V | [Circuit and test waveform](assets/level-shifter.png) |
+
+[Hardware design details and full figure gallery](docs/hardware-design.md)
+
+The report’s complete-circuit drawings contain component-label inconsistencies; see the hardware notes. Stage-specific EMG figures are provided instead of the inconsistent complete EMG drawing.
+
+These stage measurements use the test signals specified in the figures. They do not establish clinical measurement accuracy.
 
 ## EEG spectral analysis
 
@@ -68,6 +86,7 @@ Only three participants were evaluated. Feature and parameter choices were compa
 
 This is a results portfolio. Raw participant recordings, identifying information, full course reports, and source code are not distributed here. The reported experiments have not been independently rerun for this portfolio. Reproducing the original scores requires the private recordings and original implementation.
 
+- [Hardware design and measurements](docs/hardware-design.md)
 - [Technical notes and limitations](docs/technical-notes.md)
 - [Team contributions](docs/contributions.md)
 - [Aggregate classification results](results/classification-summary.csv)
